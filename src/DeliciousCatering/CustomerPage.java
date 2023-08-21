@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package DeliciousCatering;
 
-/**
- *
- * @author Twirly
- */
 public class CustomerPage extends javax.swing.JFrame {
 
     /**
@@ -359,6 +351,7 @@ public class CustomerPage extends javax.swing.JFrame {
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 120));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -370,6 +363,9 @@ public class CustomerPage extends javax.swing.JFrame {
 
     private void btnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusActionPerformed
         // View Status button
+        StatusPage sp = new StatusPage();
+        sp.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_btnStatusActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
