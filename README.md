@@ -3,9 +3,13 @@
 🟣 PROJECT PRG371 DELICIOUS CATERING 🟣
 
 =========  Database  ========
+
 🟢 When using this application make sure to install XAMPP
+
 🟢 The application makes us of mySQL
+
 🟢 Run XAMPP Control Panel and start up APACHE & mySQL
+
 🟢 Import the sql file to seup the database for application functionality
 
 =========  Development  ========
