@@ -48,7 +48,7 @@ public class RegisterPage extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Delicious Catering");
 
-        jLabel2.setText("Image Here");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DeliciousCatering/AAICON.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -60,7 +60,7 @@ public class RegisterPage extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addComponent(jLabel3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
+                        .addGap(58, 58, 58)
                         .addComponent(jLabel2)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -69,9 +69,9 @@ public class RegisterPage extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(127, 127, 127)
                 .addComponent(jLabel3)
-                .addGap(132, 132, 132)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel2)
-                .addContainerGap(237, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 560));

@@ -363,6 +363,9 @@ public class CustomerPage extends javax.swing.JFrame {
 
     private void btnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusActionPerformed
         // View Status button
+        StatusPage sp = new StatusPage();
+        sp.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_btnStatusActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
