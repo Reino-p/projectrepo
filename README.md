@@ -10,7 +10,7 @@
 
 🟢 Run XAMPP Control Panel and start up APACHE & mySQL
 
-🟢 Import the sql file to seup the database for application functionality
+🟢 Import the sql file to setup the database for application functionality
 
 =========  Development  ========
 
