@@ -20,4 +20,4 @@
 🟡 Login page (starting page)
 🟡 Admin page (Where we few the order from the client)
 🟡 Customer page (Where the client can make their order)
-🟡 Status page (Where the user will be able to view their current order status)
+🟡 Status page (Where the user will be able to view their current order status).
