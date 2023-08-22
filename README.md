@@ -32,7 +32,7 @@
 
 🟡 Login page [Role based login for Admin/Customer] (starting page)
 
-🟡 Admin page (Where we few the order from the client)
+🟡 Admin page (Where we view the order from the client)
 
 🟡 Customer page (Where the client can make their order)
 
