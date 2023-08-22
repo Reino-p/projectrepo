@@ -270,7 +270,7 @@ public class RegisterPage extends javax.swing.JFrame {
             Statement s = con.createStatement();
             String query = "INSERT INTO login_table (id,firstname,lastname,username,password,options) VALUES ('"+id+"','"+fname+"','"+lname+"','"+uname+"','"+pword+"','"+utype+"')";
             s.executeUpdate(query);
-            JOptionPane.showMessageDialog(rootPane, "User has been registered, please login.", "Registered!", 1);
+            JOptionPane.showMessageDialog(rootPane, "Account has been registered, please login.", "Registered!", 1);
             
         } catch (Exception ex) {
             //catch here
