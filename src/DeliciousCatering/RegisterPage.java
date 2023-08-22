@@ -1,9 +1,10 @@
 package DeliciousCatering;
 
-import com.mysql.cj.xdevapi.Statement;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 public class RegisterPage extends javax.swing.JFrame {
 
@@ -259,14 +260,21 @@ public class RegisterPage extends javax.swing.JFrame {
         String uname = txtUser.getText();
         String pword = txtPass.getText();
         String utype = txtCombo.getSelectedItem().toString();
+        int id = 0;
         
         con = Connectionz.getConnection();
         
         try{
             //try here
+            con = Connectionz.getConnection();
+            Statement s = con.createStatement();
+            String query = "INSERT INTO login_table (id,firstname,lastname,username,password,options) VALUES ('"+id+"','"+fname+"','"+lname+"','"+uname+"','"+pword+"','"+utype+"')";
+            s.executeUpdate(query);
+            JOptionPane.showMessageDialog(rootPane, "User has been registered, please login.", "Registered!", 1);
             
-        } catch (Exception e) {
+        } catch (Exception ex) {
             //catch here
+            System.out.println(""+ex);
         }
         
     }//GEN-LAST:event_btnRegisterActionPerformed
