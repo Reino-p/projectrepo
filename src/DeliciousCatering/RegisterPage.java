@@ -2,8 +2,6 @@ package DeliciousCatering;
 
 import java.sql.Statement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class RegisterPage extends javax.swing.JFrame {
