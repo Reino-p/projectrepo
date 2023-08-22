@@ -12,6 +12,8 @@
 
 🟢 Import the sql file to setup the database for application functionality
 
+🟢 Go to your browser and search "localhost/" to manage the mySQL database (Be sure to start apache and mysql on xampp control panel first)
+
 =========  Development  ========
 
 🟢 The application was developed using Netbeans IDE
