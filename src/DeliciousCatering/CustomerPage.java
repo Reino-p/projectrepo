@@ -409,7 +409,7 @@ public class CustomerPage extends javax.swing.JFrame {
         
         //order number
         Random rand = new Random();
-        int ordernum = rand.nextInt(50);
+        int ordernum = rand.nextInt(100);
         
         //database connection
         con = Connectionz.getConnection();
