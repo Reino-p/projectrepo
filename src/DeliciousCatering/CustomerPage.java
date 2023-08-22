@@ -1,10 +1,21 @@
 package DeliciousCatering;
 
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Random;
+import javax.swing.JOptionPane;
+
 public class CustomerPage extends javax.swing.JFrame {
 
     /**
      * Creates new form CustomerPage
      */
+    
+    Connection con;
+    
+    
     public CustomerPage() {
         initComponents();
     }
@@ -29,7 +40,7 @@ public class CustomerPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txtCname = new javax.swing.JTextField();
+        txtDate = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtComboEvent = new javax.swing.JComboBox<>();
@@ -61,6 +72,8 @@ public class CustomerPage extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         txtComboAdult1 = new javax.swing.JComboBox<>();
         txtComboAdultDrinks = new javax.swing.JComboBox<>();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -90,12 +103,12 @@ public class CustomerPage extends javax.swing.JFrame {
         jLabel3.setText("dd/mm/yyyy hh:mm");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, -1));
 
-        txtCname.setBackground(new java.awt.Color(255, 255, 255));
-        txtCname.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtCname.setForeground(new java.awt.Color(0, 0, 0));
-        txtCname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
-        jPanel3.add(txtCname, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 220, 26));
+        txtDate.setBackground(new java.awt.Color(255, 255, 255));
+        txtDate.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txtDate.setForeground(new java.awt.Color(0, 0, 0));
+        txtDate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDate.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        jPanel3.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 220, 26));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -165,12 +178,12 @@ public class CustomerPage extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Menu Selection");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, -1, 20));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, -1, 20));
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Adult:");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
+        jLabel12.setText("Food:");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, -1, -1));
 
         txtChild.setBackground(new java.awt.Color(255, 255, 255));
         txtChild.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -201,8 +214,8 @@ public class CustomerPage extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Child:");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 40, -1));
+        jLabel16.setText("Child");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 40, -1));
 
         jLabel17.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
@@ -275,6 +288,16 @@ public class CustomerPage extends javax.swing.JFrame {
         txtComboAdultDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tea", "Herbal Tea", "Fruit Juice", "Vegetable Juice", "Hot Chocolate", "Coffee", "Water", "Soft Drink", "Alcohol Free Drinks (Bar)", "Alcohol Drinks (Bar)" }));
         txtComboAdultDrinks.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtComboAdultDrinks, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 140, -1));
+
+        jLabel21.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("Adult");
+        jPanel3.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Food:");
+        jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 850, 450));
 
@@ -370,6 +393,43 @@ public class CustomerPage extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Confirmation button
+        
+        //user inputs
+        String cname = txtCname1.getText();
+        String event = txtComboEvent.getSelectedItem().toString();
+        String date = txtDate.getText();
+        String address = txtAreaAddress.getText();
+        int numadult = Integer.parseInt(txtAdult.getText());
+        int numchild = Integer.parseInt(txtChild.getText());
+        String afood = txtComboAdult1.getSelectedItem().toString();
+        String adrink = txtComboAdultDrinks.getSelectedItem().toString();
+        String adessert = txtComboAdultDessert.getSelectedItem().toString();
+        String cfood = txtComboChild.getSelectedItem().toString();
+        String cdrink = txtComboChildDrinks.getSelectedItem().toString();
+        String cdessert = txtComboChildDessert.getSelectedItem().toString();
+        String decor = txtAreaDecor.getText();
+        
+        //order number
+        Random rand = new Random();
+        int ordernum = rand.nextInt(50);
+        
+        //database connection
+        con = Connectionz.getConnection();
+        
+        //procedure of making the order
+        try{
+            //try here
+            con = Connectionz.getConnection();
+            Statement s = con.createStatement();
+            String query = "INSERT INTO order_table (customername,event,date,address,numadult,numchild,adultfood,adultdrink,adultdessert,childfood,childdrink,childdessert,decor,ordernum) VALUES ('"+cname+"','"+event+"','"+date+"','"+address+"','"+numadult+"','"+numchild+"','"+afood+"','"+adrink+"','"+adessert+"','"+cfood+"','"+cdrink+"','"+cdessert+"','"+decor+"','"+ordernum+"')";
+            s.executeUpdate(query);
+            JOptionPane.showMessageDialog(rootPane, "Order has been placed successfully, order number: "+ordernum, "Order placed!", 1);
+            
+        } catch (Exception ex) {
+            //catch here
+            System.out.println(""+ex);
+        }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -426,6 +486,8 @@ public class CustomerPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -443,7 +505,6 @@ public class CustomerPage extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAreaAddress;
     private javax.swing.JTextArea txtAreaDecor;
     private javax.swing.JTextField txtChild;
-    private javax.swing.JTextField txtCname;
     private javax.swing.JTextField txtCname1;
     private javax.swing.JComboBox<String> txtComboAdult1;
     private javax.swing.JComboBox<String> txtComboAdultDessert;
@@ -452,5 +513,6 @@ public class CustomerPage extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> txtComboChildDessert;
     private javax.swing.JComboBox<String> txtComboChildDrinks;
     private javax.swing.JComboBox<String> txtComboEvent;
+    private javax.swing.JTextField txtDate;
     // End of variables declaration//GEN-END:variables
 }
