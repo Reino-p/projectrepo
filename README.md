@@ -2,6 +2,8 @@
 
 🟣 PROJECT PRG371 DELICIOUS CATERING 🟣
 
+🔴 Download Project Code from master branch as Zip file
+
 =========  Database  ========
 
 🟢 When using this application make sure to install XAMPP
