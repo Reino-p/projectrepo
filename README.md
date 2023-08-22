@@ -30,7 +30,7 @@
 
 =========  Project Structure  ========
 
-🟡 Login page (starting page)
+🟡 Login page [Role based login for Admin/Customer] (starting page)
 
 🟡 Admin page (Where we few the order from the client)
 
