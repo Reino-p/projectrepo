@@ -1,10 +1,65 @@
 package DeliciousCatering;
 
+import java.sql.ResultSetMetaData;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 public class AdminPage extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminPage
      */
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    public void ShowTable(){
+        int CC;
+        
+        try{
+            con = Connectionz.getConnection();
+            pst = con.prepareStatement(" SELECT * FROM order_table");
+            
+            rs = pst.executeQuery();
+            ResultSetMetaData RSMD = rs.getMetaData();
+            CC = RSMD.getColumnCount();
+            
+            DefaultTableModel DFT = (DefaultTableModel)jTableAdmin.getModel();
+            
+            DFT.setRowCount(0);
+            
+            while(rs.next()){
+                Vector v2 = new Vector();
+                
+                for(int i=1; i<=CC; i++){
+                    v2.add(rs.getString("customername"));
+                    v2.add(rs.getString("event"));
+                    v2.add(rs.getString("date"));
+                    v2.add(rs.getString("address"));
+                    v2.add(rs.getString("numadult"));
+                    v2.add(rs.getString("numchild"));
+                    v2.add(rs.getString("adultfood"));
+                    v2.add(rs.getString("adultdrink"));
+                    v2.add(rs.getString("adultdessert"));
+                    v2.add(rs.getString("childfood"));
+                    v2.add(rs.getString("childdrink"));
+                    v2.add(rs.getString("childdessert"));
+                    v2.add(rs.getString("decor"));
+                    v2.add(rs.getString("ordernum"));
+                }
+                
+                DFT.addRow(v2);
+            }
+            
+        } catch (Exception ex){
+            System.out.println(""+ex);
+        }
+    }
+    
     public AdminPage() {
         initComponents();
     }
@@ -29,10 +84,10 @@ public class AdminPage extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        txtView = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnView = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableAdmin = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -75,7 +130,7 @@ public class AdminPage extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 429, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 779, Short.MAX_VALUE)
                         .addComponent(btnLogout)
                         .addGap(31, 31, 31))))
         );
@@ -95,14 +150,9 @@ public class AdminPage extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 120));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 120));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtView.setBackground(new java.awt.Color(255, 255, 255));
-        txtView.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtView.setForeground(new java.awt.Color(0, 0, 0));
-        txtView.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -117,9 +167,27 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Search for Order:");
+        jTableAdmin.setBackground(new java.awt.Color(204, 204, 204));
+        jTableAdmin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTableAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Customer Name", "Event", "Date", "Venue Address", "Number of Adults", "Number of Children", "Adult Food", "Adult Drink", "Adult Dessert", "Child Food", "Child Drink", "Child Dessert", "Decoration", "Order Number"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableAdmin.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTableAdmin);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -128,13 +196,13 @@ public class AdminPage extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 286, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtView, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnView)
-                .addGap(53, 53, 53))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1188, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,13 +210,13 @@ public class AdminPage extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnView)
-                    .addComponent(txtView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel3))
-                .addContainerGap(389, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 850, 440));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1200, 440));
 
         pack();
         setLocationRelativeTo(null);
@@ -162,7 +230,8 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        // TODO add your handling code here:
+        //View orders button
+        ShowTable();
     }//GEN-LAST:event_btnViewActionPerformed
 
     /**
@@ -206,10 +275,10 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtView;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableAdmin;
     // End of variables declaration//GEN-END:variables
 }
