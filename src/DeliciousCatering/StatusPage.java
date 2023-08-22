@@ -1,18 +1,66 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package DeliciousCatering;
 
-/**
- *
- * @author Twirly
- */
+import java.sql.ResultSetMetaData;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 public class StatusPage extends javax.swing.JFrame {
 
     /**
      * Creates new form StatusPage
      */
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    public void ShowTable(){
+        int CC;
+        int ordernumber = Integer.parseInt(txtView.getText());
+        
+        try{
+            con = Connectionz.getConnection();
+            pst = con.prepareStatement(" SELECT * FROM order_table WHERE ordernum = '"+ordernumber+"'");
+            
+            rs = pst.executeQuery();
+            ResultSetMetaData RSMD = rs.getMetaData();
+            CC = RSMD.getColumnCount();
+            
+            DefaultTableModel DFT = (DefaultTableModel)jTableStatus.getModel();
+            
+            DFT.setRowCount(0);
+            
+            while(rs.next()){
+                Vector v2 = new Vector();
+                
+                for(int i=1; i<=CC; i++){
+                    v2.add(rs.getString("customername"));
+                    v2.add(rs.getString("event"));
+                    v2.add(rs.getString("date"));
+                    v2.add(rs.getString("address"));
+                    v2.add(rs.getString("numadult"));
+                    v2.add(rs.getString("numchild"));
+                    v2.add(rs.getString("adultfood"));
+                    v2.add(rs.getString("adultdrink"));
+                    v2.add(rs.getString("adultdessert"));
+                    v2.add(rs.getString("childfood"));
+                    v2.add(rs.getString("childdrink"));
+                    v2.add(rs.getString("childdessert"));
+                    v2.add(rs.getString("decor"));
+                    v2.add(rs.getString("ordernum"));
+                }
+                
+                DFT.addRow(v2);
+            }
+            
+        } catch (Exception ex){
+            System.out.println(""+ex);
+        }
+    }
+    
     public StatusPage() {
         initComponents();
     }
@@ -26,6 +74,8 @@ public class StatusPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableAdmin = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -34,6 +84,30 @@ public class StatusPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtView = new javax.swing.JTextField();
         btnView = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableStatus = new javax.swing.JTable();
+
+        jTableAdmin.setBackground(new java.awt.Color(204, 204, 204));
+        jTableAdmin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTableAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Customer Name", "Event", "Date", "Venue Address", "Number of Adults", "Number of Children", "Adult Food", "Adult Drink", "Adult Dessert", "Child Food", "Child Drink", "Child Dessert", "Decoration", "Order Number"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableAdmin.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTableAdmin);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -70,7 +144,7 @@ public class StatusPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 434, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 734, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogout)
@@ -88,7 +162,7 @@ public class StatusPage extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 120));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 120));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -110,6 +184,28 @@ public class StatusPage extends javax.swing.JFrame {
             }
         });
 
+        jTableStatus.setBackground(new java.awt.Color(204, 204, 204));
+        jTableStatus.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTableStatus.setForeground(new java.awt.Color(0, 0, 0));
+        jTableStatus.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Customer Name", "Event", "Date", "Venue Address", "Number of Adults", "Number of Children", "Adult Food", "Adult Drink", "Adult Dessert", "Child Food", "Child Drink", "Child Dessert", "Decoration", "Order Number"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableStatus.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(jTableStatus);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -117,11 +213,15 @@ public class StatusPage extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtView, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnView)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1138, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,10 +231,12 @@ public class StatusPage extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnView))
-                .addContainerGap(390, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(289, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 850, 440));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1150, 440));
 
         pack();
         setLocationRelativeTo(null);
@@ -155,7 +257,8 @@ public class StatusPage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        // TODO add your handling code here:
+        // View button code here
+        ShowTable();
     }//GEN-LAST:event_btnViewActionPerformed
 
     /**
@@ -201,6 +304,10 @@ public class StatusPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableAdmin;
+    private javax.swing.JTable jTableStatus;
     private javax.swing.JTextField txtView;
     // End of variables declaration//GEN-END:variables
 }
