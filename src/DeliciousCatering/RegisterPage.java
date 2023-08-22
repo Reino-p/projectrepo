@@ -2,8 +2,6 @@ package DeliciousCatering;
 
 import java.sql.Statement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class RegisterPage extends javax.swing.JFrame {
@@ -13,8 +11,7 @@ public class RegisterPage extends javax.swing.JFrame {
      */
     
     Connection con;
-    PreparedStatement pst;
-    ResultSet rs;
+    
     
     public RegisterPage() {
         initComponents();
@@ -255,6 +252,7 @@ public class RegisterPage extends javax.swing.JFrame {
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // Register button code here
         
+        //user inputs
         String fname = txtFname.getText();
         String lname = txtLname.getText();
         String uname = txtUser.getText();
@@ -262,8 +260,10 @@ public class RegisterPage extends javax.swing.JFrame {
         String utype = txtCombo.getSelectedItem().toString();
         int id = 0;
         
+        //database connection
         con = Connectionz.getConnection();
         
+        //procedure of registering
         try{
             //try here
             con = Connectionz.getConnection();
