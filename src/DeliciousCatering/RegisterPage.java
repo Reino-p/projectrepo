@@ -1,11 +1,20 @@
 package DeliciousCatering;
 
+import com.mysql.cj.xdevapi.Statement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class RegisterPage extends javax.swing.JFrame {
 
     /**
      * Creates new form RegisterPage
      */
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
     public RegisterPage() {
         initComponents();
     }
@@ -29,7 +38,6 @@ public class RegisterPage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
-        txtPass = new javax.swing.JPasswordField();
         txtCombo = new javax.swing.JComboBox<>();
         btnLogin = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
@@ -37,6 +45,7 @@ public class RegisterPage extends javax.swing.JFrame {
         txtLname = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtFname = new javax.swing.JTextField();
+        txtPass = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -124,11 +133,6 @@ public class RegisterPage extends javax.swing.JFrame {
         txtUser.setForeground(new java.awt.Color(0, 0, 0));
         txtUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtPass.setBackground(new java.awt.Color(255, 255, 255));
-        txtPass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtPass.setForeground(new java.awt.Color(0, 0, 0));
-        txtPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
-
         txtCombo.setBackground(new java.awt.Color(255, 255, 255));
         txtCombo.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
         txtCombo.setForeground(new java.awt.Color(0, 0, 0));
@@ -175,6 +179,11 @@ public class RegisterPage extends javax.swing.JFrame {
         txtFname.setForeground(new java.awt.Color(0, 0, 0));
         txtFname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
+        txtPass.setBackground(new java.awt.Color(255, 255, 255));
+        txtPass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
+        txtPass.setForeground(new java.awt.Color(0, 0, 0));
+        txtPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -191,8 +200,8 @@ public class RegisterPage extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addComponent(jLabel6)
                         .addComponent(jLabel4)
-                        .addComponent(txtPass)
-                        .addComponent(txtLname))
+                        .addComponent(txtLname)
+                        .addComponent(txtPass))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -216,9 +225,9 @@ public class RegisterPage extends javax.swing.JFrame {
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,6 +253,21 @@ public class RegisterPage extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // Register button code here
+        
+        String fname = txtFname.getText();
+        String lname = txtLname.getText();
+        String uname = txtUser.getText();
+        String pword = txtPass.getText();
+        String utype = txtCombo.getSelectedItem().toString();
+        
+        con = Connectionz.getConnection();
+        
+        try{
+            //try here
+            
+        } catch (Exception e) {
+            //catch here
+        }
         
     }//GEN-LAST:event_btnRegisterActionPerformed
 
@@ -299,7 +323,7 @@ public class RegisterPage extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> txtCombo;
     private javax.swing.JTextField txtFname;
     private javax.swing.JTextField txtLname;
-    private javax.swing.JPasswordField txtPass;
+    private javax.swing.JTextField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
