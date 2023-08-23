@@ -1,5 +1,6 @@
-package DeliciousCatering;
+package com.dc.presentation;
 
+import com.dc.dataaccess.Connectionz;
 import java.sql.ResultSetMetaData;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -151,7 +152,6 @@ public class StatusPage extends javax.swing.JFrame {
 
         jTableAdmin.setBackground(new java.awt.Color(204, 204, 204));
         jTableAdmin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTableAdmin.setForeground(new java.awt.Color(0, 0, 0));
         jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -172,23 +172,17 @@ public class StatusPage extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableAdmin);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Customer Name:");
 
-        txtCname1.setBackground(new java.awt.Color(255, 255, 255));
         txtCname1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtCname1.setForeground(new java.awt.Color(0, 0, 0));
         txtCname1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCname1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Venue Address:");
 
-        txtAreaAddress.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaAddress.setColumns(20);
         txtAreaAddress.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtAreaAddress.setForeground(new java.awt.Color(0, 0, 0));
         txtAreaAddress.setRows(5);
         txtAreaAddress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jScrollPane3.setViewportView(txtAreaAddress);
@@ -251,12 +245,9 @@ public class StatusPage extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Enter Order Number To View:");
 
-        txtView.setBackground(new java.awt.Color(255, 255, 255));
         txtView.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtView.setForeground(new java.awt.Color(0, 0, 0));
         txtView.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         btnView.setBackground(new java.awt.Color(153, 153, 0));
@@ -270,7 +261,6 @@ public class StatusPage extends javax.swing.JFrame {
 
         jTableStatus.setBackground(new java.awt.Color(204, 204, 204));
         jTableStatus.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTableStatus.setForeground(new java.awt.Color(0, 0, 0));
         jTableStatus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -296,153 +286,109 @@ public class StatusPage extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTableStatus);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Customer Name:");
 
-        txtCname.setBackground(new java.awt.Color(255, 255, 255));
         txtCname.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtCname.setForeground(new java.awt.Color(0, 0, 0));
         txtCname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Edit Order Information:");
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Event Type:");
 
-        txtComboEvent.setBackground(new java.awt.Color(255, 255, 255));
         txtComboEvent.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtComboEvent.setForeground(new java.awt.Color(0, 0, 0));
         txtComboEvent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Birthday", "Wedding", "Baby Shower", "Retirement Party", "Engagement", "Reunion", "Corporate Event", "Holiday Party", "Themed Party", "Family Dinner", "Bridal Shower", "Bachelor Party" }));
         txtComboEvent.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Event Date & Time:");
 
-        txtDate.setBackground(new java.awt.Color(255, 255, 255));
         txtDate.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtDate.setForeground(new java.awt.Color(0, 0, 0));
         txtDate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDate.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Venue Address:");
 
-        txtAreaAddress1.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaAddress1.setColumns(20);
         txtAreaAddress1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtAreaAddress1.setForeground(new java.awt.Color(0, 0, 0));
         txtAreaAddress1.setRows(5);
         txtAreaAddress1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jScrollPane4.setViewportView(txtAreaAddress1);
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Number of People:");
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Adult:");
 
-        txtAdult.setBackground(new java.awt.Color(255, 255, 255));
         txtAdult.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtAdult.setForeground(new java.awt.Color(0, 0, 0));
         txtAdult.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel15.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Child:");
 
-        txtChild.setBackground(new java.awt.Color(255, 255, 255));
         txtChild.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtChild.setForeground(new java.awt.Color(0, 0, 0));
         txtChild.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Menu Selection");
 
         jLabel21.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Adult");
 
         jLabel16.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Child");
 
         jLabel22.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Food:");
 
         jLabel20.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Drinks:");
 
         jLabel19.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Dessert:");
 
-        txtComboAdultDessert.setBackground(new java.awt.Color(255, 255, 255));
         txtComboAdultDessert.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboAdultDessert.setForeground(new java.awt.Color(0, 0, 0));
         txtComboAdultDessert.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Cake", "Pie", "Cupcakes", "Brownies", "Ice Cream", "Waffles", "Pancakes", "Flapjacks", "Sweets Packet" }));
         txtComboAdultDessert.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtComboAdultDrinks.setBackground(new java.awt.Color(255, 255, 255));
         txtComboAdultDrinks.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboAdultDrinks.setForeground(new java.awt.Color(0, 0, 0));
         txtComboAdultDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tea", "Herbal Tea", "Fruit Juice", "Vegetable Juice", "Hot Chocolate", "Coffee", "Water", "Soft Drink", "Alcohol Free Drinks (Bar)", "Alcohol Drinks (Bar)" }));
         txtComboAdultDrinks.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtComboAdult1.setBackground(new java.awt.Color(255, 255, 255));
         txtComboAdult1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboAdult1.setForeground(new java.awt.Color(0, 0, 0));
         txtComboAdult1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Pizza", "Burger", "Pasta", "Mix Salad", "Wraps", "Lasagne", "Tacos", "Nachos", "Burritos", "Meatball Sub", "Sloppy Joes", "Hot Dog", "Grilled Chicken", "Fried Chicken", "Steak", "Lobster Roll", "Egg Fried Rice", "Korean Beef Bowl" }));
         txtComboAdult1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel17.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Food:");
 
-        txtComboChild.setBackground(new java.awt.Color(255, 255, 255));
         txtComboChild.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboChild.setForeground(new java.awt.Color(0, 0, 0));
         txtComboChild.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Mac & Cheese", "Hot Dog", "Wrap", "Fish Fingers and Fries", "Sloppy Joes", "Quesadillas", "Pizza", "Fried Chicken", "Chicken waffles", "Cheesy Fries", "Corn Dogs", "Spaghetti and Meatballs", "Nachos" }));
         txtComboChild.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtComboChildDrinks.setBackground(new java.awt.Color(255, 255, 255));
         txtComboChildDrinks.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboChildDrinks.setForeground(new java.awt.Color(0, 0, 0));
         txtComboChildDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tea", "Fruit Juice", "Hot Chocolate", "Water", "Soft Drink", "Flavoured Milk", "Smoothy" }));
         txtComboChildDrinks.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel18.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Drinks:");
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Dessert:");
 
-        txtComboChildDessert.setBackground(new java.awt.Color(255, 255, 255));
         txtComboChildDessert.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboChildDessert.setForeground(new java.awt.Color(0, 0, 0));
         txtComboChildDessert.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Cake", "Pie", "Cupcakes", "Brownies", "Ice Cream", "Waffles", "Pancakes", "Flapjacks", "Sweets Packet" }));
         txtComboChildDessert.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel23.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("Decorations:");
 
-        txtAreaDecor.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaDecor.setColumns(20);
         txtAreaDecor.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtAreaDecor.setForeground(new java.awt.Color(0, 0, 0));
         txtAreaDecor.setRows(5);
         txtAreaDecor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jScrollPane5.setViewportView(txtAreaDecor);
@@ -458,7 +404,6 @@ public class StatusPage extends javax.swing.JFrame {
 
         btnRefresh.setBackground(new java.awt.Color(204, 153, 255));
         btnRefresh.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        btnRefresh.setForeground(new java.awt.Color(0, 0, 0));
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -466,7 +411,6 @@ public class StatusPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Click on order to populate fields");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

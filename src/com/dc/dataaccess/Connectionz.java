@@ -1,4 +1,4 @@
-package DeliciousCatering;
+package com.dc.dataaccess;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

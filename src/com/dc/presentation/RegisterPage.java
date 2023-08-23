@@ -1,5 +1,6 @@
-package DeliciousCatering;
+package com.dc.presentation;
 
+import com.dc.dataaccess.Connectionz;
 import java.sql.Statement;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
@@ -126,14 +127,10 @@ public class RegisterPage extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Password");
 
-        txtUser.setBackground(new java.awt.Color(255, 255, 255));
         txtUser.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtUser.setForeground(new java.awt.Color(0, 0, 0));
         txtUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtCombo.setBackground(new java.awt.Color(255, 255, 255));
         txtCombo.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtCombo.setForeground(new java.awt.Color(0, 0, 0));
         txtCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Admin", "Customer" }));
         txtCombo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
@@ -162,9 +159,7 @@ public class RegisterPage extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Last Name");
 
-        txtLname.setBackground(new java.awt.Color(255, 255, 255));
         txtLname.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtLname.setForeground(new java.awt.Color(0, 0, 0));
         txtLname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 24)); // NOI18N
@@ -172,14 +167,10 @@ public class RegisterPage extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("First Name");
 
-        txtFname.setBackground(new java.awt.Color(255, 255, 255));
         txtFname.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtFname.setForeground(new java.awt.Color(0, 0, 0));
         txtFname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtPass.setBackground(new java.awt.Color(255, 255, 255));
         txtPass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtPass.setForeground(new java.awt.Color(0, 0, 0));
         txtPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);

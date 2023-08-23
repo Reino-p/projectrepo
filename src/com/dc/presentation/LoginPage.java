@@ -1,5 +1,6 @@
-package DeliciousCatering;
+package com.dc.presentation;
 
+import com.dc.dataaccess.Connectionz;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -125,19 +126,13 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Password");
 
-        txtUser.setBackground(new java.awt.Color(255, 255, 255));
         txtUser.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtUser.setForeground(new java.awt.Color(0, 0, 0));
         txtUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtPass.setBackground(new java.awt.Color(255, 255, 255));
         txtPass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtPass.setForeground(new java.awt.Color(0, 0, 0));
         txtPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtCombo.setBackground(new java.awt.Color(255, 255, 255));
         txtCombo.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtCombo.setForeground(new java.awt.Color(0, 0, 0));
         txtCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Admin", "Customer" }));
         txtCombo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
