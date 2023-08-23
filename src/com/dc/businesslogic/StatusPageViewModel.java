@@ -16,10 +16,10 @@ import java.sql.ResultSet;
  * Business logic for StatusPage
  */
 public class StatusPageViewModel {
+    OrderDetailsConnection orderDetailsConnection;
     
     public ResultSet getOrderDetailsResultSet(int orderNumber) {
-        OrderDetailsConnection orderDetailsConnection = new OrderDetailsConnection();
-        
+        orderDetailsConnection = new OrderDetailsConnection();
         try {
             return orderDetailsConnection.getOrderDetails(orderNumber);
         } catch (SQLException ex) {
@@ -27,6 +27,11 @@ public class StatusPageViewModel {
         }
         
         return null;
+    }
+    
+    public void updateOrder(OrderDetails orderDetails) throws SQLException {
+        orderDetailsConnection = new OrderDetailsConnection();
+        orderDetailsConnection.updateOrder(orderDetails);
     }
     
 }
