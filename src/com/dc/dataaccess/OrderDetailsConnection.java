@@ -43,4 +43,18 @@ public class OrderDetailsConnection {
         String query = "UPDATE order_table SET customername='" + orderDetails.getCname() + "','" + orderDetails.getEvent() + "','" + orderDetails.getDate() + "','" + orderDetails.getAddress() + "','" + orderDetails.getNumadult() + "','" + orderDetails.getNumchild() + "','" + orderDetails.getAfood() + "','" + orderDetails.getAdrink() + "','" + orderDetails.getAdessert() + "','" + orderDetails.getCfood() + "','" + orderDetails.getCdrink() + "','" + orderDetails.getCdessert() + "','" + orderDetails.getDecor() + "','" + orderDetails.getOrderNumber() + "' ";
         s.executeUpdate(query);
     }
+    
+    public void deleteOrder(int orderNumber) throws SQLException {
+        connection = Connectionz.getConnection();
+        Statement s = connection.createStatement();
+        String query = "DELETE FROM order_table WHERE ordernum = '"+orderNumber+"'";
+        s.executeUpdate(query);
+    }
+    
+    public ResultSet getAllOrders() throws SQLException {
+        connection = Connectionz.getConnection();
+        preparedStatement = connection.prepareStatement(" SELECT * FROM order_table");
+        resultSet = preparedStatement.executeQuery();
+        return resultSet;
+    }
 }

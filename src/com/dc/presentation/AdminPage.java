@@ -1,11 +1,9 @@
 package com.dc.presentation;
 
+import com.dc.businesslogic.AdminPageViewModel;
 import com.dc.dataaccess.Connectionz;
 import java.sql.ResultSetMetaData;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,22 +13,17 @@ public class AdminPage extends javax.swing.JFrame {
     /**
      * Creates new form AdminPage
      */
-    
-    Connection con;
-    PreparedStatement pst;
     ResultSet rs;
     
     public void ShowTable(){
         int CC;
         
         try{
-            con = Connectionz.getConnection();
-            pst = con.prepareStatement(" SELECT * FROM order_table");
-            
-            rs = pst.executeQuery();
+             AdminPageViewModel adminPageViewModel = new AdminPageViewModel();
+            rs = adminPageViewModel.getAllOrders();
             ResultSetMetaData RSMD = rs.getMetaData();
             CC = RSMD.getColumnCount();
-            
+                
             DefaultTableModel DFT = (DefaultTableModel)jTableAdmin.getModel();
             
             DFT.setRowCount(0);
@@ -326,15 +319,10 @@ public class AdminPage extends javax.swing.JFrame {
         
         //order number
         int ordernum = Integer.parseInt(txtRemove.getText());
-        //database connection
-        con = Connectionz.getConnection();
-        
         try{
             //try this
-            con = Connectionz.getConnection();
-            Statement s = con.createStatement();
-            String query = "DELETE FROM order_table WHERE ordernum = '"+ordernum+"'";
-            s.executeUpdate(query);
+             AdminPageViewModel adminPageViewModel = new AdminPageViewModel();
+             adminPageViewModel.deleteOrder(ordernum);
             JOptionPane.showMessageDialog(rootPane, "Order has been Removed successfully. Please refresh table. Order number: "+ordernum, "Order Removed!", 1);
             clear();
             

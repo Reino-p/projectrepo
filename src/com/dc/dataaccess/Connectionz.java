@@ -3,6 +3,10 @@ package com.dc.dataaccess;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ *
+ * Main connection to DB
+ */
 public class Connectionz {
     static Connection con;
     
