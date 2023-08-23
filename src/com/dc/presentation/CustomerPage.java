@@ -1,7 +1,7 @@
-package DeliciousCatering;
+package com.dc.presentation;
 
-import java.sql.Statement;
-import java.sql.Connection;
+import com.dc.businesslogic.CustomerPageViewModel;
+import com.dc.models.OrderDetails;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -29,9 +29,6 @@ public class CustomerPage extends javax.swing.JFrame {
         txtAreaDecor.setText("");
     
     }
-    
-    Connection con;
-    
     
     public CustomerPage() {
         initComponents();
@@ -120,15 +117,12 @@ public class CustomerPage extends javax.swing.JFrame {
         jLabel3.setText("dd/mm/yyyy hh:mm");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, -1));
 
-        txtDate.setBackground(new java.awt.Color(255, 255, 255));
         txtDate.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtDate.setForeground(new java.awt.Color(0, 0, 0));
         txtDate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDate.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 220, 26));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Customer Name:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 57, -1, -1));
 
@@ -138,39 +132,30 @@ public class CustomerPage extends javax.swing.JFrame {
         jLabel5.setText("Please fill in the required details below:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        txtComboEvent.setBackground(new java.awt.Color(255, 255, 255));
         txtComboEvent.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtComboEvent.setForeground(new java.awt.Color(0, 0, 0));
         txtComboEvent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Birthday", "Wedding", "Baby Shower", "Retirement Party", "Engagement", "Reunion", "Corporate Event", "Holiday Party", "Themed Party", "Family Dinner", "Bridal Shower", "Bachelor Party" }));
         txtComboEvent.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtComboEvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 106, 220, -1));
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Event Type:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
 
-        txtCname1.setBackground(new java.awt.Color(255, 255, 255));
         txtCname1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtCname1.setForeground(new java.awt.Color(0, 0, 0));
         txtCname1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCname1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtCname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 55, 220, 26));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Dessert:");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, -1, 20));
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Event Date & Time:");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
-        txtAreaAddress.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaAddress.setColumns(20);
         txtAreaAddress.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtAreaAddress.setForeground(new java.awt.Color(0, 0, 0));
         txtAreaAddress.setRows(5);
         txtAreaAddress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jScrollPane1.setViewportView(txtAreaAddress);
@@ -188,94 +173,71 @@ public class CustomerPage extends javax.swing.JFrame {
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Venue Address:");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Menu Selection");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, -1, 20));
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Food:");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, -1, -1));
 
-        txtChild.setBackground(new java.awt.Color(255, 255, 255));
         txtChild.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtChild.setForeground(new java.awt.Color(0, 0, 0));
         txtChild.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 30, 20));
 
-        txtAdult.setBackground(new java.awt.Color(255, 255, 255));
         txtAdult.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtAdult.setForeground(new java.awt.Color(0, 0, 0));
         txtAdult.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtAdult, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 30, 20));
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Number of People:");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Adult:");
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Child:");
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Child");
         jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 40, -1));
 
         jLabel17.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Drinks:");
         jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, -1, 20));
 
-        txtComboChildDessert.setBackground(new java.awt.Color(255, 255, 255));
         txtComboChildDessert.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboChildDessert.setForeground(new java.awt.Color(0, 0, 0));
         txtComboChildDessert.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Cake", "Pie", "Cupcakes", "Brownies", "Ice Cream", "Waffles", "Pancakes", "Flapjacks", "Sweets Packet" }));
         txtComboChildDessert.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtComboChildDessert, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 230, 130, -1));
 
-        txtComboAdultDessert.setBackground(new java.awt.Color(255, 255, 255));
         txtComboAdultDessert.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboAdultDessert.setForeground(new java.awt.Color(0, 0, 0));
         txtComboAdultDessert.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Cake", "Pie", "Cupcakes", "Brownies", "Ice Cream", "Waffles", "Pancakes", "Flapjacks", "Sweets Packet" }));
         txtComboAdultDessert.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtComboAdultDessert, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 140, -1));
 
-        txtComboChild.setBackground(new java.awt.Color(255, 255, 255));
         txtComboChild.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboChild.setForeground(new java.awt.Color(0, 0, 0));
         txtComboChild.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Mac & Cheese", "Hot Dog", "Wrap", "Fish Fingers and Fries", "Sloppy Joes", "Quesadillas", "Pizza", "Fried Chicken", "Chicken waffles", "Cheesy Fries", "Corn Dogs", "Spaghetti and Meatballs", "Nachos" }));
         txtComboChild.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtComboChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, 130, -1));
 
-        txtComboChildDrinks.setBackground(new java.awt.Color(255, 255, 255));
         txtComboChildDrinks.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboChildDrinks.setForeground(new java.awt.Color(0, 0, 0));
         txtComboChildDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tea", "Fruit Juice", "Hot Chocolate", "Water", "Soft Drink", "Flavoured Milk", "Smoothy" }));
         txtComboChildDrinks.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtComboChildDrinks, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 130, -1));
 
         jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Decorations:");
         jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, -1, -1));
 
-        txtAreaDecor.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaDecor.setColumns(20);
         txtAreaDecor.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtAreaDecor.setForeground(new java.awt.Color(0, 0, 0));
         txtAreaDecor.setRows(5);
         txtAreaDecor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jScrollPane2.setViewportView(txtAreaDecor);
@@ -283,36 +245,28 @@ public class CustomerPage extends javax.swing.JFrame {
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 290, 110));
 
         jLabel19.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Dessert:");
         jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, -1, 20));
 
         jLabel20.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Drinks:");
         jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, 20));
 
-        txtComboAdult1.setBackground(new java.awt.Color(255, 255, 255));
         txtComboAdult1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboAdult1.setForeground(new java.awt.Color(0, 0, 0));
         txtComboAdult1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Pizza", "Burger", "Pasta", "Mix Salad", "Wraps", "Lasagne", "Tacos", "Nachos", "Burritos", "Meatball Sub", "Sloppy Joes", "Hot Dog", "Grilled Chicken", "Fried Chicken", "Steak", "Lobster Roll", "Egg Fried Rice", "Korean Beef Bowl" }));
         txtComboAdult1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtComboAdult1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, 140, -1));
 
-        txtComboAdultDrinks.setBackground(new java.awt.Color(255, 255, 255));
         txtComboAdultDrinks.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        txtComboAdultDrinks.setForeground(new java.awt.Color(0, 0, 0));
         txtComboAdultDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tea", "Herbal Tea", "Fruit Juice", "Vegetable Juice", "Hot Chocolate", "Coffee", "Water", "Soft Drink", "Alcohol Free Drinks (Bar)", "Alcohol Drinks (Bar)" }));
         txtComboAdultDrinks.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jPanel3.add(txtComboAdultDrinks, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 140, -1));
 
         jLabel21.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Adult");
         jPanel3.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Food:");
         jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
 
@@ -412,42 +366,31 @@ public class CustomerPage extends javax.swing.JFrame {
         // Confirmation button
         
         //user inputs
-        String cname = txtCname1.getText();
-        String event = txtComboEvent.getSelectedItem().toString();
-        String date = txtDate.getText();
-        String address = txtAreaAddress.getText();
-        int numadult = Integer.parseInt(txtAdult.getText());
-        int numchild = Integer.parseInt(txtChild.getText());
-        String afood = txtComboAdult1.getSelectedItem().toString();
-        String adrink = txtComboAdultDrinks.getSelectedItem().toString();
-        String adessert = txtComboAdultDessert.getSelectedItem().toString();
-        String cfood = txtComboChild.getSelectedItem().toString();
-        String cdrink = txtComboChildDrinks.getSelectedItem().toString();
-        String cdessert = txtComboChildDessert.getSelectedItem().toString();
-        String decor = txtAreaDecor.getText();
+        OrderDetails orderDetails = new OrderDetails();
+        
+        orderDetails.setCname(txtCname1.getText());
+        orderDetails.setEvent(txtComboEvent.getSelectedItem().toString());
+        orderDetails.setDate(txtDate.getText());
+        orderDetails.setAddress(txtAreaAddress.getText());
+        orderDetails.setNumadult(Integer.parseInt(txtAdult.getText()));
+        orderDetails.setNumchild(Integer.parseInt(txtChild.getText()));
+        orderDetails.setAfood(txtComboAdult1.getSelectedItem().toString());
+        orderDetails.setAdrink(txtComboAdultDrinks.getSelectedItem().toString());
+        orderDetails.setAdessert(txtComboAdultDessert.getSelectedItem().toString());
+        orderDetails.setCfood(txtComboChild.getSelectedItem().toString());
+        orderDetails.setCdrink(txtComboChildDrinks.getSelectedItem().toString());
+        orderDetails.setCdessert(txtComboChildDessert.getSelectedItem().toString());
+        orderDetails.setDecor(txtAreaDecor.getText());
         
         //order number
         Random rand = new Random();
         int ordernum = rand.nextInt(100);
+        orderDetails.setOrderNumber(ordernum);
         
-        //database connection
-        con = Connectionz.getConnection();
-        
-        //procedure of making the order
-        try{
-            //try here
-            con = Connectionz.getConnection();
-            Statement s = con.createStatement();
-            String query = "INSERT INTO order_table (customername,event,date,address,numadult,numchild,adultfood,adultdrink,adultdessert,childfood,childdrink,childdessert,decor,ordernum) VALUES ('"+cname+"','"+event+"','"+date+"','"+address+"','"+numadult+"','"+numchild+"','"+afood+"','"+adrink+"','"+adessert+"','"+cfood+"','"+cdrink+"','"+cdessert+"','"+decor+"','"+ordernum+"')";
-            s.executeUpdate(query);
-            JOptionPane.showMessageDialog(rootPane, "Order has been placed successfully, order number: "+ordernum, "Order placed!", 1);
-            clear();
-            
-        } catch (Exception ex) {
-            //catch here
-            System.out.println(""+ex);
-        }
-        
+        CustomerPageViewModel customerPageViewModel = new CustomerPageViewModel();
+        customerPageViewModel.insertOrderDetails(orderDetails);
+        JOptionPane.showMessageDialog(rootPane, "Order has been placed successfully, order number: "+ordernum, "Order placed!", 1);
+        clear();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

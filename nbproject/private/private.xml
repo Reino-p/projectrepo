@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/dataaccess/Connectionz.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/presentation/LoginPage.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/businesslogic/LoginPageViewModel.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/presentation/StatusPage.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/businesslogic/RegisterPageViewModel.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/models/OrderDetails.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/dataaccess/OrderDetailsConnection.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/businesslogic/StatusPageViewModel.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/dataaccess/LoginConnection.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/models/User.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/DeliciousCatering/Main.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/presentation/CustomerPage.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/businesslogic/CustomerPageViewModel.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/presentation/AdminPage.java</file>
+            <file>file:/C:/workspace/bc/java/projectrepo/src/com/dc/businesslogic/AdminPageViewModel.java</file>
+        </group>
+    </open-files>
+</project-private>

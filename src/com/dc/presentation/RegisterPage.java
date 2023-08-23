@@ -1,7 +1,8 @@
-package DeliciousCatering;
+package com.dc.presentation;
 
-import java.sql.Statement;
-import java.sql.Connection;
+import com.dc.businesslogic.LoginPageViewModel;
+import com.dc.dataaccess.Connectionz;
+import com.dc.models.User;
 import javax.swing.JOptionPane;
 
 public class RegisterPage extends javax.swing.JFrame {
@@ -9,9 +10,6 @@ public class RegisterPage extends javax.swing.JFrame {
     /**
      * Creates new form RegisterPage
      */
-    
-    Connection con;
-    
     
     public RegisterPage() {
         initComponents();
@@ -126,14 +124,10 @@ public class RegisterPage extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Password");
 
-        txtUser.setBackground(new java.awt.Color(255, 255, 255));
         txtUser.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtUser.setForeground(new java.awt.Color(0, 0, 0));
         txtUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtCombo.setBackground(new java.awt.Color(255, 255, 255));
         txtCombo.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtCombo.setForeground(new java.awt.Color(0, 0, 0));
         txtCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Admin", "Customer" }));
         txtCombo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
@@ -162,9 +156,7 @@ public class RegisterPage extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Last Name");
 
-        txtLname.setBackground(new java.awt.Color(255, 255, 255));
         txtLname.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtLname.setForeground(new java.awt.Color(0, 0, 0));
         txtLname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 24)); // NOI18N
@@ -172,14 +164,10 @@ public class RegisterPage extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("First Name");
 
-        txtFname.setBackground(new java.awt.Color(255, 255, 255));
         txtFname.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtFname.setForeground(new java.awt.Color(0, 0, 0));
         txtFname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtPass.setBackground(new java.awt.Color(255, 255, 255));
         txtPass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtPass.setForeground(new java.awt.Color(0, 0, 0));
         txtPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -251,25 +239,19 @@ public class RegisterPage extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // Register button code here
+        User user = new  User();
         
-        //user inputs
-        String fname = txtFname.getText();
-        String lname = txtLname.getText();
-        String uname = txtUser.getText();
-        String pword = txtPass.getText();
-        String utype = txtCombo.getSelectedItem().toString();
-        int id = 0;
+        user.setFname(txtFname.getText());
+        user.setLname(txtLname.getText());
+        user.setUsername(txtUser.getText());
+        user.setPassword(txtPass.getText());
+        user.setOptions(txtCombo.getSelectedItem().toString());
+        user.setId(0);
         
-        //database connection
-        con = Connectionz.getConnection();
-        
-        //procedure of registering
+       //procedure of registering
         try{
-            //try here
-            con = Connectionz.getConnection();
-            Statement s = con.createStatement();
-            String query = "INSERT INTO login_table (id,firstname,lastname,username,password,options) VALUES ('"+id+"','"+fname+"','"+lname+"','"+uname+"','"+pword+"','"+utype+"')";
-            s.executeUpdate(query);
+             LoginPageViewModel viewModel = new LoginPageViewModel(); 
+             viewModel.RegisterUser(user);
             JOptionPane.showMessageDialog(rootPane, "Account has been registered, please login.", "Registered!", 1);
             
         } catch (Exception ex) {

@@ -1,8 +1,6 @@
-package DeliciousCatering;
+package com.dc.presentation;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import com.dc.businesslogic.LoginPageViewModel;
 import javax.swing.JOptionPane;
 
 public class LoginPage extends javax.swing.JFrame {
@@ -10,9 +8,6 @@ public class LoginPage extends javax.swing.JFrame {
     /**
      * Creates new form LoginPage
      */
-    Connection con;
-    PreparedStatement pst;
-    ResultSet rs;
     
     public LoginPage() {
         initComponents();
@@ -125,19 +120,13 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Password");
 
-        txtUser.setBackground(new java.awt.Color(255, 255, 255));
         txtUser.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtUser.setForeground(new java.awt.Color(0, 0, 0));
         txtUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtPass.setBackground(new java.awt.Color(255, 255, 255));
         txtPass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtPass.setForeground(new java.awt.Color(0, 0, 0));
         txtPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        txtCombo.setBackground(new java.awt.Color(255, 255, 255));
         txtCombo.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        txtCombo.setForeground(new java.awt.Color(0, 0, 0));
         txtCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Admin", "Customer" }));
         txtCombo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
@@ -230,22 +219,17 @@ public class LoginPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Some Fields Are Empty", "Error", 1);
         }else{
             try{
-                con = Connectionz.getConnection();
-                pst = con.prepareStatement("select * from login_table where username=? and password=?");
-                pst.setString(1, uname);
-                pst.setString(2, pword);
-                rs = pst.executeQuery();
+                LoginPageViewModel loginPageViewModel = new LoginPageViewModel();
+                loginPageViewModel.Login(uname, pword);
                 
-                if(rs.next()){
-                    String s1 = rs.getString("options");
-                    String un = rs.getString("username");
-                    if(option.equalsIgnoreCase("Admin")&& s1.equalsIgnoreCase("admin")){
-                        AdminPage ad = new AdminPage(un);
+                if(loginPageViewModel.isUserLoggedIn()){
+                    if(option.equalsIgnoreCase("Admin")&& loginPageViewModel.getOption().equalsIgnoreCase("admin")){
+                        AdminPage ad = new AdminPage(loginPageViewModel.getUsername());
                         ad.setVisible(true);
                         setVisible(false);
                     }
-                    if(option.equalsIgnoreCase("Customer")&& s1.equalsIgnoreCase("customer")){
-                        CustomerPage cp = new CustomerPage(un);
+                    if(option.equalsIgnoreCase("Customer")&& loginPageViewModel.getOption().equalsIgnoreCase("customer")){
+                        CustomerPage cp = new CustomerPage(loginPageViewModel.getUsername());
                         cp.setVisible(true);
                         setVisible(false);
                     }
