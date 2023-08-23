@@ -11,6 +11,25 @@ public class CustomerPage extends javax.swing.JFrame {
      * Creates new form CustomerPage
      */
     
+    //clear fields after operation
+    public void clear(){
+    
+        txtCname1.setText("");
+        txtComboEvent.setSelectedIndex(0);
+        txtDate.setText("");
+        txtAreaAddress.setText("");
+        txtAdult.setText("");
+        txtChild.setText("");
+        txtComboAdult1.setSelectedIndex(0);
+        txtComboAdultDrinks.setSelectedIndex(0);
+        txtComboAdultDessert.setSelectedIndex(0);
+        txtComboChild.setSelectedIndex(0);
+        txtComboChildDrinks.setSelectedIndex(0);
+        txtComboChildDessert.setSelectedIndex(0);
+        txtAreaDecor.setText("");
+    
+    }
+    
     Connection con;
     
     
@@ -422,6 +441,7 @@ public class CustomerPage extends javax.swing.JFrame {
             String query = "INSERT INTO order_table (customername,event,date,address,numadult,numchild,adultfood,adultdrink,adultdessert,childfood,childdrink,childdessert,decor,ordernum) VALUES ('"+cname+"','"+event+"','"+date+"','"+address+"','"+numadult+"','"+numchild+"','"+afood+"','"+adrink+"','"+adessert+"','"+cfood+"','"+cdrink+"','"+cdessert+"','"+decor+"','"+ordernum+"')";
             s.executeUpdate(query);
             JOptionPane.showMessageDialog(rootPane, "Order has been placed successfully, order number: "+ordernum, "Order placed!", 1);
+            clear();
             
         } catch (Exception ex) {
             //catch here
