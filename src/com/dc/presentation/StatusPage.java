@@ -1,5 +1,6 @@
 package com.dc.presentation;
 
+import com.dc.businesslogic.StatusPageViewModel;
 import com.dc.dataaccess.Connectionz;
 import java.sql.ResultSetMetaData;
 import java.sql.Connection;
@@ -25,10 +26,9 @@ public class StatusPage extends javax.swing.JFrame {
         int ordernumber = Integer.parseInt(txtView.getText());
         
         try{
-            con = Connectionz.getConnection();
-            pst = con.prepareStatement(" SELECT * FROM order_table WHERE ordernum = '"+ordernumber+"'");
-            
-            rs = pst.executeQuery();
+
+            StatusPageViewModel statusPageViewModel = new StatusPageViewModel();
+            rs = statusPageViewModel.getOrderDetailsResultSet(ordernumber);
             ResultSetMetaData RSMD = rs.getMetaData();
             CC = RSMD.getColumnCount();
             

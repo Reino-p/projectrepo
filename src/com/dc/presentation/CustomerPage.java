@@ -1,8 +1,7 @@
 package com.dc.presentation;
 
-import com.dc.dataaccess.Connectionz;
-import java.sql.Statement;
-import java.sql.Connection;
+import com.dc.businesslogic.CustomerPageViewModel;
+import com.dc.models.OrderDetails;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -30,9 +29,6 @@ public class CustomerPage extends javax.swing.JFrame {
         txtAreaDecor.setText("");
     
     }
-    
-    Connection con;
-    
     
     public CustomerPage() {
         initComponents();
@@ -370,42 +366,31 @@ public class CustomerPage extends javax.swing.JFrame {
         // Confirmation button
         
         //user inputs
-        String cname = txtCname1.getText();
-        String event = txtComboEvent.getSelectedItem().toString();
-        String date = txtDate.getText();
-        String address = txtAreaAddress.getText();
-        int numadult = Integer.parseInt(txtAdult.getText());
-        int numchild = Integer.parseInt(txtChild.getText());
-        String afood = txtComboAdult1.getSelectedItem().toString();
-        String adrink = txtComboAdultDrinks.getSelectedItem().toString();
-        String adessert = txtComboAdultDessert.getSelectedItem().toString();
-        String cfood = txtComboChild.getSelectedItem().toString();
-        String cdrink = txtComboChildDrinks.getSelectedItem().toString();
-        String cdessert = txtComboChildDessert.getSelectedItem().toString();
-        String decor = txtAreaDecor.getText();
+        OrderDetails orderDetails = new OrderDetails();
+        
+        orderDetails.setCname(txtCname1.getText());
+        orderDetails.setEvent(txtComboEvent.getSelectedItem().toString());
+        orderDetails.setDate(txtDate.getText());
+        orderDetails.setAddress(txtAreaAddress.getText());
+        orderDetails.setNumadult(Integer.parseInt(txtAdult.getText()));
+        orderDetails.setNumchild(Integer.parseInt(txtChild.getText()));
+        orderDetails.setAfood(txtComboAdult1.getSelectedItem().toString());
+        orderDetails.setAdrink(txtComboAdultDrinks.getSelectedItem().toString());
+        orderDetails.setAdessert(txtComboAdultDessert.getSelectedItem().toString());
+        orderDetails.setCfood(txtComboChild.getSelectedItem().toString());
+        orderDetails.setCdrink(txtComboChildDrinks.getSelectedItem().toString());
+        orderDetails.setCdessert(txtComboChildDessert.getSelectedItem().toString());
+        orderDetails.setDecor(txtAreaDecor.getText());
         
         //order number
         Random rand = new Random();
         int ordernum = rand.nextInt(100);
+        orderDetails.setOrderNumber(ordernum);
         
-        //database connection
-        con = Connectionz.getConnection();
-        
-        //procedure of making the order
-        try{
-            //try here
-            con = Connectionz.getConnection();
-            Statement s = con.createStatement();
-            String query = "INSERT INTO order_table (customername,event,date,address,numadult,numchild,adultfood,adultdrink,adultdessert,childfood,childdrink,childdessert,decor,ordernum) VALUES ('"+cname+"','"+event+"','"+date+"','"+address+"','"+numadult+"','"+numchild+"','"+afood+"','"+adrink+"','"+adessert+"','"+cfood+"','"+cdrink+"','"+cdessert+"','"+decor+"','"+ordernum+"')";
-            s.executeUpdate(query);
-            JOptionPane.showMessageDialog(rootPane, "Order has been placed successfully, order number: "+ordernum, "Order placed!", 1);
-            clear();
-            
-        } catch (Exception ex) {
-            //catch here
-            System.out.println(""+ex);
-        }
-        
+        CustomerPageViewModel customerPageViewModel = new CustomerPageViewModel();
+        customerPageViewModel.insertOrderDetails(orderDetails);
+        JOptionPane.showMessageDialog(rootPane, "Order has been placed successfully, order number: "+ordernum, "Order placed!", 1);
+        clear();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
