@@ -5,6 +5,7 @@
 package com.dc.businesslogic;
 
 import com.dc.dataaccess.LoginConnection;
+import com.dc.models.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -44,5 +45,11 @@ public class LoginPageViewModel {
     public String getUsername() throws SQLException {
         String username = resultSet.getString("username");
         return username;
+    }
+    public void  RegisterUser(User user) throws SQLException {
+        this.loginConnection = new LoginConnection();
+        this.loginConnection.RegisterUser(user);
+        
+      
     }
 }

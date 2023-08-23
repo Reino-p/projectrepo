@@ -4,9 +4,12 @@
  */
 package com.dc.dataaccess;
 
+import com.dc.models.User;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -33,8 +36,19 @@ public class LoginConnection {
     
         return null;
     }
+   
+            
+    public void RegisterUser(User user) throws SQLException {
+        
+            connection = Connectionz.getConnection();
+            Statement s = connection.createStatement();
+            String query = "INSERT INTO login_table (id,firstname,lastname,username,password,options) VALUES ('"+user.getId()+"','"+user.getFname()+"','"+user.getLname()+"','"+user.getUsername()+"','"+user.getPassword()+"','"+user.getOptions()+"')";
+            s.executeUpdate(query);
+
+        
     
-    
+        
+    }
     
 
 }

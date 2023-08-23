@@ -9,7 +9,34 @@ package com.dc.models;
  * User Model
  */
 public class User {
-    String username, password, options;
+
+    String username, password, options, fname, lname;
+    int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
 
     public String getUsername() {
         return username;
@@ -34,5 +61,5 @@ public class User {
     public void setOptions(String options) {
         this.options = options;
     }
-    
+
 }
