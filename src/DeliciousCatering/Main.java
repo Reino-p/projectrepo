@@ -6,9 +6,6 @@ public class Main {
         LoginPage lp = new LoginPage();
         lp.setVisible(true);
         
-        //new info 
-        //test 1
-        //Heinrich
         
     }
 }
