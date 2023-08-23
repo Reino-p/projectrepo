@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class StatusPage extends javax.swing.JFrame {
@@ -21,6 +22,7 @@ public class StatusPage extends javax.swing.JFrame {
     public void ShowTable(){
         int CC;
         int ordernumber = Integer.parseInt(txtView.getText());
+        System.out.println(ordernumber);
         
         try{
 
@@ -623,10 +625,10 @@ public class StatusPage extends javax.swing.JFrame {
         
         OrderDetails orderDetails = new OrderDetails();
         
-        orderDetails.setCname(txtCname1.getText());
+        orderDetails.setCname(txtCname.getText());
         orderDetails.setEvent(txtComboEvent.getSelectedItem().toString());
         orderDetails.setDate(txtDate.getText());
-        orderDetails.setAddress(txtAreaAddress.getText());
+        orderDetails.setAddress(txtAreaAddress1.getText());
         orderDetails.setNumadult(Integer.parseInt(txtAdult.getText()));
         orderDetails.setNumchild(Integer.parseInt(txtChild.getText()));
         orderDetails.setAfood(txtComboAdult1.getSelectedItem().toString());
@@ -644,6 +646,8 @@ public class StatusPage extends javax.swing.JFrame {
         StatusPageViewModel statusPageViewModel = new StatusPageViewModel();
         try {
             statusPageViewModel.updateOrder(orderDetails);
+            JOptionPane.showMessageDialog(rootPane, "Order has been updated successfully. Please refresh table. Order number: "+ordernum, "Order updated!", 1);
+            clear();
         } catch (SQLException ex) {
             Logger.getLogger(StatusPage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -672,6 +676,7 @@ public class StatusPage extends javax.swing.JFrame {
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         //Refresh button
         ShowTable();
+        
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     /**

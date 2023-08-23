@@ -38,9 +38,10 @@ public class OrderDetailsConnection {
     }
 
     public void updateOrder(OrderDetails orderDetails) throws SQLException {
+        System.out.println(orderDetails);
         connection = Connectionz.getConnection();
         Statement s = connection.createStatement();
-        String query = "UPDATE order_table SET customername='" + orderDetails.getCname() + "','" + orderDetails.getEvent() + "','" + orderDetails.getDate() + "','" + orderDetails.getAddress() + "','" + orderDetails.getNumadult() + "','" + orderDetails.getNumchild() + "','" + orderDetails.getAfood() + "','" + orderDetails.getAdrink() + "','" + orderDetails.getAdessert() + "','" + orderDetails.getCfood() + "','" + orderDetails.getCdrink() + "','" + orderDetails.getCdessert() + "','" + orderDetails.getDecor() + "','" + orderDetails.getOrderNumber() + "' ";
+        String query = "UPDATE order_table SET customername='"+orderDetails.getCname()+"',event='"+orderDetails.getEvent()+"',date='"+orderDetails.getDate()+"',`address`='"+orderDetails.getAddress()+"',`numadult`='"+orderDetails.getNumadult()+"',`numchild`='"+orderDetails.getNumchild()+"',`adultfood`='"+orderDetails.getAfood()+"',`adultdrink`='"+orderDetails.getAdrink()+"',`adultdessert`='"+orderDetails.getAdessert()+"',`childfood`='"+orderDetails.getCfood()+"',`childdrink`='"+orderDetails.getCdrink()+"',`childdessert`='"+orderDetails.getCdessert()+"',`decor`='"+orderDetails.getDecor()+"' WHERE ordernum = '"+orderDetails.getOrderNumber()+"' ";
         s.executeUpdate(query);
     }
     
