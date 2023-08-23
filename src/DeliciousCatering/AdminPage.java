@@ -4,7 +4,9 @@ import java.sql.ResultSetMetaData;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class AdminPage extends javax.swing.JFrame {
@@ -60,6 +62,13 @@ public class AdminPage extends javax.swing.JFrame {
         }
     }
     
+    //clear fields after operation
+    public void clear(){
+    
+        txtRemove.setText("");
+    
+    }
+    
     public AdminPage() {
         initComponents();
     }
@@ -88,6 +97,12 @@ public class AdminPage extends javax.swing.JFrame {
         btnView = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAdmin = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        txtRemove = new javax.swing.JTextField();
+        btnRemove = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        btnRefresh1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -187,22 +202,82 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jTableAdmin.getTableHeader().setReorderingAllowed(false);
+        jTableAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableAdminMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableAdmin);
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Remove Order:");
+
+        txtRemove.setBackground(new java.awt.Color(255, 255, 255));
+        txtRemove.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txtRemove.setForeground(new java.awt.Color(0, 0, 0));
+        txtRemove.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+
+        btnRemove.setBackground(new java.awt.Color(255, 102, 102));
+        btnRemove.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnRemove.setText("Remove Order");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Select Order From Table");
+
+        btnRefresh1.setBackground(new java.awt.Color(204, 153, 255));
+        btnRefresh1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnRefresh1.setForeground(new java.awt.Color(0, 0, 0));
+        btnRefresh1.setText("Refresh");
+        btnRefresh1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefresh1ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Remove Order Number:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnView)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1188, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnView)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRefresh1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1188, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnRemove)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,13 +285,23 @@ public class AdminPage extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnView)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(btnRefresh1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemove)
+                    .addComponent(jLabel7))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1200, 440));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1200, 370));
 
         pack();
         setLocationRelativeTo(null);
@@ -233,6 +318,44 @@ public class AdminPage extends javax.swing.JFrame {
         //View orders button
         ShowTable();
     }//GEN-LAST:event_btnViewActionPerformed
+
+    private void jTableAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAdminMouseClicked
+        // click on table this will execute
+        // When clicking on table this will execute
+        int row = jTableAdmin.getSelectedRow(); //get the row index
+        DefaultTableModel model = (DefaultTableModel)jTableAdmin.getModel();
+        txtRemove.setText(model.getValueAt(row, 13).toString());
+        
+    }//GEN-LAST:event_jTableAdminMouseClicked
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        // Remove button code here
+        
+        //order number
+        int ordernum = Integer.parseInt(txtRemove.getText());
+        //database connection
+        con = Connectionz.getConnection();
+        
+        try{
+            //try this
+            con = Connectionz.getConnection();
+            Statement s = con.createStatement();
+            String query = "DELETE FROM order_table WHERE ordernum = '"+ordernum+"'";
+            s.executeUpdate(query);
+            JOptionPane.showMessageDialog(rootPane, "Order has been Removed successfully. Please refresh table. Order number: "+ordernum, "Order Removed!", 1);
+            clear();
+            
+        } catch (Exception ex) {
+            //catch this
+            System.out.println(""+ex);
+        }
+        
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh1ActionPerformed
+        // Refresh button code here
+        ShowTable();
+    }//GEN-LAST:event_btnRefresh1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,14 +394,20 @@ public class AdminPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnRefresh1;
+    private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnView;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAdmin;
+    private javax.swing.JTextField txtRemove;
     // End of variables declaration//GEN-END:variables
 }
