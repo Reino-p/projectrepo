@@ -1,14 +1,12 @@
 package com.dc.presentation;
 
 import com.dc.businesslogic.StatusPageViewModel;
-import com.dc.dataaccess.Connectionz;
+import com.dc.models.OrderDetails;
 import java.sql.ResultSetMetaData;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Vector;
-import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class StatusPage extends javax.swing.JFrame {
@@ -17,8 +15,6 @@ public class StatusPage extends javax.swing.JFrame {
      * Creates new form StatusPage
      */
     
-    Connection con;
-    PreparedStatement pst;
     ResultSet rs;
     
     public void ShowTable(){
@@ -624,39 +620,31 @@ public class StatusPage extends javax.swing.JFrame {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // Update button code
         
-        //user inputs
-        String cname = txtCname.getText();
-        String event = txtComboEvent.getSelectedItem().toString();
-        String date = txtDate.getText();
-        String address = txtAreaAddress1.getText();
-        int numadult = Integer.parseInt(txtAdult.getText());
-        int numchild = Integer.parseInt(txtChild.getText());
-        String afood = txtComboAdult1.getSelectedItem().toString();
-        String adrink = txtComboAdultDrinks.getSelectedItem().toString();
-        String adessert = txtComboAdultDessert.getSelectedItem().toString();
-        String cfood = txtComboChild.getSelectedItem().toString();
-        String cdrink = txtComboChildDrinks.getSelectedItem().toString();
-        String cdessert = txtComboChildDessert.getSelectedItem().toString();
-        String decor = txtAreaDecor.getText();
+        OrderDetails orderDetails = new OrderDetails();
+        
+        orderDetails.setCname(txtCname1.getText());
+        orderDetails.setEvent(txtComboEvent.getSelectedItem().toString());
+        orderDetails.setDate(txtDate.getText());
+        orderDetails.setAddress(txtAreaAddress.getText());
+        orderDetails.setNumadult(Integer.parseInt(txtAdult.getText()));
+        orderDetails.setNumchild(Integer.parseInt(txtChild.getText()));
+        orderDetails.setAfood(txtComboAdult1.getSelectedItem().toString());
+        orderDetails.setAdrink(txtComboAdultDrinks.getSelectedItem().toString());
+        orderDetails.setAdessert(txtComboAdultDessert.getSelectedItem().toString());
+        orderDetails.setCfood(txtComboChild.getSelectedItem().toString());
+        orderDetails.setCdrink(txtComboChildDrinks.getSelectedItem().toString());
+        orderDetails.setCdessert(txtComboChildDessert.getSelectedItem().toString());
+        orderDetails.setDecor(txtAreaDecor.getText());
         
         //order number
         int ordernum = Integer.parseInt(txtView.getText());
+        orderDetails.setOrderNumber(ordernum);
         
-        //database connection
-        con = Connectionz.getConnection();
-        
-        try{
-            //try this
-            con = Connectionz.getConnection();
-            Statement s = con.createStatement();
-            String query = "UPDATE order_table SET customername='"+cname+"',event='"+event+"',date='"+date+"',`address`='"+address+"',`numadult`='"+numadult+"',`numchild`='"+numchild+"',`adultfood`='"+afood+"',`adultdrink`='"+adrink+"',`adultdessert`='"+adessert+"',`childfood`='"+cfood+"',`childdrink`='"+cdrink+"',`childdessert`='"+cdessert+"',`decor`='"+decor+"' WHERE ordernum = '"+ordernum+"' ";
-            s.executeUpdate(query);
-            JOptionPane.showMessageDialog(rootPane, "Order has been updated successfully. Please refresh table. Order number: "+ordernum, "Order updated!", 1);
-            clear();
-            
-        } catch (Exception ex) {
-            //catch this
-            System.out.println(""+ex);
+        StatusPageViewModel statusPageViewModel = new StatusPageViewModel();
+        try {
+            statusPageViewModel.updateOrder(orderDetails);
+        } catch (SQLException ex) {
+            Logger.getLogger(StatusPage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
