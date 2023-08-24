@@ -1,5 +1,6 @@
 package com.dc.presentation;
 
+import com.dc.businesslogic.SendEmail;
 import com.dc.businesslogic.StatusPageViewModel;
 import com.dc.models.OrderDetails;
 import java.sql.ResultSetMetaData;
@@ -648,6 +649,8 @@ public class StatusPage extends javax.swing.JFrame {
             statusPageViewModel.updateOrder(orderDetails);
             JOptionPane.showMessageDialog(rootPane, "Order has been updated successfully. Please refresh table. Order number: "+ordernum, "Order updated!", 1);
             clear();
+            SendEmail em = new SendEmail();
+            em.send();
         } catch (SQLException ex) {
             Logger.getLogger(StatusPage.class.getName()).log(Level.SEVERE, null, ex);
         }
