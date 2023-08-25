@@ -1,10 +1,9 @@
-package DeliciousCatering;
+package com.dc.presentation;
 
+import com.dc.businesslogic.AdminPageViewModel;
+import com.dc.dataaccess.Connectionz;
 import java.sql.ResultSetMetaData;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,22 +13,17 @@ public class AdminPage extends javax.swing.JFrame {
     /**
      * Creates new form AdminPage
      */
-    
-    Connection con;
-    PreparedStatement pst;
     ResultSet rs;
     
     public void ShowTable(){
         int CC;
         
         try{
-            con = Connectionz.getConnection();
-            pst = con.prepareStatement(" SELECT * FROM order_table");
-            
-            rs = pst.executeQuery();
+             AdminPageViewModel adminPageViewModel = new AdminPageViewModel();
+            rs = adminPageViewModel.getAllOrders();
             ResultSetMetaData RSMD = rs.getMetaData();
             CC = RSMD.getColumnCount();
-            
+                
             DefaultTableModel DFT = (DefaultTableModel)jTableAdmin.getModel();
             
             DFT.setRowCount(0);
@@ -170,7 +164,6 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Current Orders");
 
         btnView.setBackground(new java.awt.Color(153, 153, 0));
@@ -184,7 +177,6 @@ public class AdminPage extends javax.swing.JFrame {
 
         jTableAdmin.setBackground(new java.awt.Color(204, 204, 204));
         jTableAdmin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTableAdmin.setForeground(new java.awt.Color(0, 0, 0));
         jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -210,12 +202,9 @@ public class AdminPage extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableAdmin);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Remove Order:");
 
-        txtRemove.setBackground(new java.awt.Color(255, 255, 255));
         txtRemove.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txtRemove.setForeground(new java.awt.Color(0, 0, 0));
         txtRemove.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         btnRemove.setBackground(new java.awt.Color(255, 102, 102));
@@ -228,12 +217,10 @@ public class AdminPage extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Select Order From Table");
 
         btnRefresh1.setBackground(new java.awt.Color(204, 153, 255));
         btnRefresh1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        btnRefresh1.setForeground(new java.awt.Color(0, 0, 0));
         btnRefresh1.setText("Refresh");
         btnRefresh1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +229,6 @@ public class AdminPage extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Remove Order Number:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -333,15 +319,10 @@ public class AdminPage extends javax.swing.JFrame {
         
         //order number
         int ordernum = Integer.parseInt(txtRemove.getText());
-        //database connection
-        con = Connectionz.getConnection();
-        
         try{
             //try this
-            con = Connectionz.getConnection();
-            Statement s = con.createStatement();
-            String query = "DELETE FROM order_table WHERE ordernum = '"+ordernum+"'";
-            s.executeUpdate(query);
+             AdminPageViewModel adminPageViewModel = new AdminPageViewModel();
+             adminPageViewModel.deleteOrder(ordernum);
             JOptionPane.showMessageDialog(rootPane, "Order has been Removed successfully. Please refresh table. Order number: "+ordernum, "Order Removed!", 1);
             clear();
             
