@@ -28,6 +28,8 @@
 
 🟢 It utilised 2 branches the "Main" and "Development branches"
 
+🟢 Other"feature" branches were also utilized
+
 =========  Project Structure  ========
 
 🟡 Login page [Role based login for Admin/Customer] (starting page)
